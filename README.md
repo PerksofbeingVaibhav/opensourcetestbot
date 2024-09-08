@@ -1,11 +1,19 @@
-## 🚨 Here for  [Unit Test Generator](README-UnitGen.md) (ut-gen)? 
-Keploy's new launched world's first unit test generator(ut-gen) implementation of [Meta LLM research paper](https://arxiv.org/pdf/2402.09171), it understands code semantics and generates meaningful unit tests, aiming to:
+### Code Deployment:
+1. The ARM templates corresponding to the Hunting Queries, Analytic Rules, Workbooks, Playbooks are given in the respective folders.
+2. Upload each of these templates to create the resources
+3. In order to track the Discord alerts sent by our Bot, follow the below steps:
+   - Create a private channel where you want the Discord alerts to be displayed
+   - Go to server settings -> Integrations -> New Webhook and select the channel that you created in step 1
+   - Copy the Webhook URL and paste this value while uploading the ARM template for Playbooks (Malware-Response)
 
-- **Automate unit test generation (UTG)**: Quickly generate comprehensive unit tests and reduce the redundant manual effort.
+### Configuration:
 
-- **Improve edge cases**: Extend and improve the scope of tests to cover more complex scenarios that are often missed manually.
+1. Add the AzureLogsBot from [Bot Link](https://discord.com/api/oauth2/authorize?client_id=883646665473540117&permissions=8&scope=bot%20applications.commands) to your server
+2. Type $help in the server to get instructions related to Sentinel solution configuration
 
-- **Boost test coverage**: As codebase grows, ensuring exhaustive coverage should become feasible.
+![Screenshot (135)](https://user-images.githubusercontent.com/56287147/135886356-f3b84fa9-4f38-47c9-8584-88826787acc4.png)
 
-
-This is my first open source repository by taking reference from Keploy Open Source Repository 
+3. Get the Workspace ID and shared key from the LogAnalytics Workspace (LogAnalytics Workspace -> Agents management, copy workspace id and primary key correspondingly )
+4. Define the blacklisted extensionTypes (ex: xml, lmz etc)
+5. Create a function app with a HTTP trigger. Update the default \_\_init\_\_.py file with contents of [AttachmentParse.py](https://github.com/PerksofbeingVaibhav/opensourcetestbot/blob/master/Data%20Connectors/AttachmentsFunctionApp/AttachmentParse.py).
+6. Get the function key of Azure function deployed in Azure.
